@@ -1,0 +1,30 @@
+:root {
+  --transparent: transparent;
+  --black: #000;
+  --white: #fff;
+
+  --gunmetal-100: #d4d5d7;
+  --gunmetal-200: #9b9da1;
+  --gunmetal-400: #63656a;
+  --gunmetal-500: #2a2d34;
+  --gunmetal-800: #17191d;
+
+  --blue-400: #6caef1;
+  --blue-500: #3c91e6;
+
+  --red-400: #d11124;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+input,
+button {
+  border: 0;
+  border-radius: 0.25rem;
+}

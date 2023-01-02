@@ -1,0 +1,211 @@
+/* 
+
+Login Form - HTML+CSS+JAVASCRIPT v0.0.1 BETA
+Created by: Gabriel Almeida (PingO)
+Twitter: https://bit.ly/3GJeLDt
+Github: https://bit.ly/3VJFmEP
+Buy Me a Coffee: https://bit.ly/3NlkAGU
+
+*/
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: var(--gunmetal-800);
+  color: var(--gunmetal-200);
+}
+
+.labelError {
+  position: absolute;
+  color: var(--red-400);
+  margin-top: -4.4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.userIcon {
+  font-size: 7.2rem;
+  color: var(--blue-500);
+}
+
+.title {
+  color: var(--gunmetal-100);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.good {
+  color: var(--gunmetal-400);
+  font-size: 1.2rem;
+  margin-top: 0.6rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 90%;
+  max-width: 400px;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.labelEmail,
+.labelPassword,
+.labelRemember {
+  display: flex;
+}
+
+.labelEmail,
+.labelPassword {
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.labelRemember {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rememberSpan {
+  margin-left: 2rem;
+}
+
+.emailSpan,
+.passwordSpan {
+  color: var(--gunmetal-200);
+  font-weight: 600;
+  line-height: 1.25rem;
+}
+
+.inputEmailContainer,
+.inputPasswordContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background-color: var(--gunmetal-500);
+  border-radius: 0.25rem;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.inputEmailContainer:focus-within,
+.inputPasswordContainer:focus-within {
+  box-shadow: inset 0 0 0 calc(2px + 0px) var(--blue-500);
+}
+
+.inputEmailContainer i,
+.inputPasswordContainer i {
+  font-size: 24px;
+}
+
+.inputEmail {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  color: var(--gunmetal-200);
+  background-color: var(--transparent) !important;
+  outline: none;
+  flex: 1;
+}
+
+.inputPassword {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  color: var(--gunmetal-200);
+  background-color: var(--transparent);
+  outline: none;
+  flex: 1;
+}
+
+.inputEmail::placeholder,
+.inputPassword::placeholder {
+  color: var(--gunmetal-400);
+}
+
+.inputVerify {
+  display: none;
+}
+
+.btnCheckbox {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  position: absolute;
+}
+
+.btnSignIn {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem 1rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: var(--black);
+  background: var(--blue-500);
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+}
+
+.btnSignIn:hover {
+  background-color: var(--blue-400);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.footerLink {
+  color: var(--gunmetal-400);
+  font-size: 0.875rem;
+  line-height: 1rem;
+  text-decoration: underline;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.footerLink:hover {
+  color: var(--gunmetal-200);
+}
+
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
