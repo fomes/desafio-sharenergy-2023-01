@@ -1,19 +1,19 @@
 .container {
   position: fixed;
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   background-color: var(--gunmetal-800);
   color: var(--gunmetal-200);
   padding: 1rem;
 }
 
-.container button {
+.container > button {
+  height: 3rem;
   margin-top: 1rem;
-  padding: 0.75rem 1rem 1rem 0.75rem;
+  padding: 1rem;
   font-size: 1rem;
   line-height: 1.25rem;
   font-weight: 600;
-  color: var(--black);
   background: var(--blue-500);
   transition-property: color, background-color, border-color,
     text-decoration-color, fill, stroke;
@@ -23,8 +23,20 @@
 
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.container button:hover {
+.container > button:hover {
   background-color: var(--blue-400);
+}
+
+@media (max-width: 768px) {
+  .container > h1 {
+    font-size: 1.8rem;
+  }
+
+  .container > button {
+    height: 2rem;
+    font-size: 0.8rem;
+  }
 }
