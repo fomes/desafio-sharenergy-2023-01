@@ -78,6 +78,7 @@ export default function Table() {
       <>
         <div className={styles.dataTable}>
           <DataTable
+            theme="dark"
             striped
             subHeader
             pagination

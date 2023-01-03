@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BiLogOutCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Table from "../components/Table";
@@ -17,7 +18,9 @@ export default function Home() {
       {auth || (auth && remember) ? (
         <div className={styles.container}>
           <h1>Welcome {name}!</h1>
-          <button onClick={() => handleLogOut(navigate("/"))}>Logout</button>
+          <button onClick={() => handleLogOut(navigate("/"))}>
+            <BiLogOutCircle /> Logout
+          </button>
           <Navbar />
           <Table />
         </div>
