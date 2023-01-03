@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.container a {
+  background: var(--gunmetal-100);
+  color: var(--gunmetal-800);
+  width: 1.5rem;
+  height: 1.5rem;
+  text-decoration: none;
+  border-radius: 50%;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -85,7 +85,7 @@ export default function Table() {
             data={filteredItems}
             defaultSortFieldId={2}
             subHeaderComponent={subHeaderComponent}
-            paginationRowsPerPageOptions={[5, 10, 20]}
+            paginationRowsPerPageOptions={[5, 10]}
           />
         </div>
       </>
