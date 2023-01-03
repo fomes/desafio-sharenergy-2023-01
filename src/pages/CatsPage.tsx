@@ -8,12 +8,12 @@ import { BiLogOutCircle } from "react-icons/bi";
 
 export default function CatsPage() {
   const [inptuText, setInputText] = useState("");
-  const [statusLink, setStatusLink] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const navigate = useNavigate();
 
-  const handleSearchStatus = (status: string) => {
-    setStatusLink(`https://http.cat/${status}`);
+  const handleGetCats = () => {
+    setImageUrl("https://http.cat/" + inptuText);
   };
 
   return (
@@ -31,12 +31,11 @@ export default function CatsPage() {
           className={styles.inputStatus}
           onChange={(event) => setInputText(event.target.value)}
         />
-        <a href={statusLink} target={"_blank"}>
-          <button onClick={() => handleSearchStatus(inptuText)}>GO</button>
-        </a>
+
+        <button onClick={handleGetCats}>GO</button>
       </div>
       <div className={styles.imgContainer}>
-        <img src="" alt="" />
+        <img src={imageUrl} alt="" />
       </div>
     </div>
   );

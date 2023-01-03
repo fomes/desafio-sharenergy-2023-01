@@ -7,7 +7,3 @@ export const api = axios.create({
 export const apiUsers = axios.create({
   baseURL: "https://randomuser.me/api/",
 });
-
-export const apiStatus = axios.create({
-  baseURL: "https://http.cat/",
-});
