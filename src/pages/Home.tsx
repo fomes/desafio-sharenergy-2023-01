@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Table from "../components/Table";
+import { AuthContext } from "../context";
 import { getUsers } from "../services/getUsers";
 import styles from "../styles/page.module.css";
 import stylesTable from "../styles/tableUsers.module.css";
-import { handleLogOut } from "../utils/handleLogOut";
+import ErrorPage from "./ErrorPage";
 
 export default function Home() {
-  const [name] = useState(localStorage.getItem("user"));
-  const [auth] = useState(localStorage.getItem("auth"));
-  const [remember] = useState(localStorage.getItem("remember"));
+  const { auth, setAuth } = useContext(AuthContext);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   const columns = [
     {
@@ -49,7 +49,12 @@ export default function Home() {
     },
   ];
 
-  const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.removeItem("auth");
+    localStorage.removeItem("remember");
+    setAuth(false);
+    navigate("/");
+  };
 
   useEffect(() => {
     getUsers(setData);
@@ -57,10 +62,10 @@ export default function Home() {
 
   return (
     <>
-      {auth || (auth && remember) ? (
+      {auth ? (
         <div className={styles.container}>
-          <h1>Welcome {name}!</h1>
-          <button onClick={() => handleLogOut(navigate("/"))}>
+          <h1>Home</h1>
+          <button onClick={handleLogOut}>
             <BiLogOutCircle /> Logout
           </button>
           <Navbar />
@@ -72,7 +77,7 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        <h1>Não autorizado!</h1>
+        <ErrorPage />
       )}
     </>
   );

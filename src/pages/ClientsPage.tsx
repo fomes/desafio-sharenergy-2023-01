@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { handleLogOut } from "../utils/handleLogOut";
 import stylesDefault from "../styles/page.module.css";
 import { BiLogOutCircle } from "react-icons/bi";
 import { BsFillPencilFill } from "react-icons/bs";
@@ -17,6 +16,8 @@ import { deleteClient } from "../services/deleteClient";
 import styles from "../styles/clientsPage.module.css";
 import ModalEditClient from "../components/ModalEditClient";
 import ModalAddClient from "../components/ModalAddClient";
+import { AuthContext } from "../context";
+import ErrorPage from "./ErrorPage";
 
 interface ClientProp {
   id: string;
@@ -40,7 +41,15 @@ export default function ClientsPage() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
+  const { auth, setAuth } = useContext(AuthContext);
+
   const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("auth");
+    setAuth(false);
+    navigate("/");
+  };
 
   const handleCloseAddModal = () => {
     setShowModalAddPerson(false);
@@ -189,55 +198,61 @@ export default function ClientsPage() {
   }, []);
 
   return (
-    <div className={stylesDefault.container}>
-      <ModalAddClient
-        show={showModalAddPerson}
-        handleCloseModal={handleCloseAddModal}
-        handleConfirmAdd={handleConfirmAdd}
-        handleName={(event: any) => setName(event.target.value)}
-        handleEmail={(event: any) => setEmail(event.target.value)}
-        handleCpf={(event: any) => setCpf(event.target.value)}
-        handleAddress={(event: any) => setAddress(event.target.value)}
-        handlePhone={(event: any) => setPhone(event.target.value)}
-      />
+    <>
+      {auth ? (
+        <div className={stylesDefault.container}>
+          <ModalAddClient
+            show={showModalAddPerson}
+            handleCloseModal={handleCloseAddModal}
+            handleConfirmAdd={handleConfirmAdd}
+            handleName={(event: any) => setName(event.target.value)}
+            handleEmail={(event: any) => setEmail(event.target.value)}
+            handleCpf={(event: any) => setCpf(event.target.value)}
+            handleAddress={(event: any) => setAddress(event.target.value)}
+            handlePhone={(event: any) => setPhone(event.target.value)}
+          />
 
-      <ModalEditClient
-        show={showModalEditPerson}
-        handleCloseEditModal={handleCloseEditModal}
-        handleConfirmEdit={handleConfirmEdit}
-        name={name}
-        email={email}
-        cpf={cpf}
-        address={address}
-        phone={phone}
-        handleName={(event: any) => setName(event.target.value)}
-        handleEmail={(event: any) => setEmail(event.target.value)}
-        handleCpf={(event: any) => setCpf(event.target.value)}
-        handleAddress={(event: any) => setAddress(event.target.value)}
-        handlePhone={(event: any) => setPhone(event.target.value)}
-      />
+          <ModalEditClient
+            show={showModalEditPerson}
+            handleCloseEditModal={handleCloseEditModal}
+            handleConfirmEdit={handleConfirmEdit}
+            name={name}
+            email={email}
+            cpf={cpf}
+            address={address}
+            phone={phone}
+            handleName={(event: any) => setName(event.target.value)}
+            handleEmail={(event: any) => setEmail(event.target.value)}
+            handleCpf={(event: any) => setCpf(event.target.value)}
+            handleAddress={(event: any) => setAddress(event.target.value)}
+            handlePhone={(event: any) => setPhone(event.target.value)}
+          />
 
-      <ModalConfirmDelete
-        show={showDeleteModal}
-        handleCloseDeleteModal={handleCloseDeleteModal}
-        handleConfirmDelete={handleConfirmDelete}
-      />
-      <h1>Clients</h1>
-      <button onClick={() => handleLogOut(navigate("/"))}>
-        <BiLogOutCircle /> Logout
-      </button>
+          <ModalConfirmDelete
+            show={showDeleteModal}
+            handleCloseDeleteModal={handleCloseDeleteModal}
+            handleConfirmDelete={handleConfirmDelete}
+          />
+          <h1>Clients</h1>
+          <button onClick={handleLogOut}>
+            <BiLogOutCircle /> Logout
+          </button>
 
-      <button onClick={handleOpenAddModal}>
-        <AiOutlineUserAdd />
-        New
-      </button>
-      <Navbar />
+          <Navbar />
+          <button onClick={handleOpenAddModal}>
+            <AiOutlineUserAdd />
+            New
+          </button>
 
-      <div className={stylesTable.container}>
-        <div className={stylesTable.dataTable}>
-          <Table dataProps={data} columnProps={columns} />
+          <div className={stylesTable.container}>
+            <div className={stylesTable.dataTable}>
+              <Table dataProps={data} columnProps={columns} />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <ErrorPage />
+      )}
+    </>
   );
 }
