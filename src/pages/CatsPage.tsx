@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { handleLogOut } from "../utils/handleLogOut";
 import defaultStyles from "../styles/page.module.css";
-import styles from "../styles/catspage.module.css";
+import styles from "../styles/catsPage.module.css";
 import { BiLogOutCircle } from "react-icons/bi";
 
 export default function CatsPage() {
