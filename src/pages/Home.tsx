@@ -15,31 +15,31 @@ export default function Home() {
         return <img src={row.picture.thumbnail} alt="photo" />;
       },
       sortable: true,
-      width: "16.66%",
+      width: "20%",
     },
     {
       name: "Name",
       selector: (row: any) => row.name.first + " " + row.name.last,
       sortable: true,
-      width: "16.66%",
+      width: "20%",
     },
     {
       name: "Email",
       selector: (row: any) => row.email,
       sortable: true,
-      width: "16.66",
+      width: "20%",
     },
     {
       name: "Username",
       selector: (row: any) => row.login.username,
       sortable: true,
-      width: "16.66%",
+      width: "20%",
     },
     {
       name: "Age",
       selector: (row: any) => row.dob.age,
       sortable: true,
-      width: "16.66%",
+      width: "20%",
     },
   ];
 

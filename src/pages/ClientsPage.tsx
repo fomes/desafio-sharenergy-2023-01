@@ -139,7 +139,7 @@ export default function ClientsPage() {
       name: "Email",
       selector: (row: any) => row.email,
       sortable: true,
-      width: "16.66",
+      width: "16.66%",
     },
     {
       name: "Phone",
