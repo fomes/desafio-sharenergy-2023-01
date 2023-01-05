@@ -31,6 +31,7 @@ export default function Table({ dataProps, columnProps }: any) {
 
   return (
     <DataTable
+      keyField={"username"}
       theme="dark"
       striped
       subHeader
