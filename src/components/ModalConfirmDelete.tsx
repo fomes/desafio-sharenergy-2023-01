@@ -9,11 +9,11 @@ export default function ModalConfirmDelete({
     <>
       {show && (
         <div className={styles.container}>
-          <h2>Tem certeza?</h2>
+          <h2>Are you sure?</h2>
 
           <div>
-            <button onClick={handleConfirmDelete}>Deletar</button>
-            <button onClick={handleCloseDeleteModal}>Cancelar</button>
+            <button onClick={handleConfirmDelete}>Delete</button>
+            <button onClick={handleCloseDeleteModal}>Cancel</button>
           </div>
         </div>
       )}

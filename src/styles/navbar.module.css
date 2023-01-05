@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: space-between;
   padding-left: 0.2rem;
-  padding-right: 1.8rem;
+  padding-right: 1.7rem;
+  width: 100%;
 
   margin-bottom: 1rem;
   margin-top: -1rem;
@@ -41,6 +42,7 @@
 .container > button {
   height: 2rem;
   width: 5rem;
+  margin-right: -0.8rem;
   font-weight: 600;
   background: var(--blue-500);
   transition-property: color, background-color, border-color,
@@ -78,11 +80,5 @@
 
   .btnContainer {
     gap: 0;
-  }
-}
-
-@media (min-width: 1360px) {
-  .container {
-    padding-right: 2.3rem;
   }
 }

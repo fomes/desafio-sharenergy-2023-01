@@ -21,7 +21,7 @@ export default function ModalEditClient({
     <>
       {show && (
         <div className={styles.container}>
-          <h2>Edit Client</h2>{" "}
+          <h2>Edit Customer</h2>{" "}
           <span onClick={handleCloseEditModal}>
             <AiFillCloseCircle />
           </span>

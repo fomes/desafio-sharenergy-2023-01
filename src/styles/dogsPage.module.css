@@ -1,16 +1,17 @@
 .imgContainer {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .imgContainer > img {
-  width: 90%;
+  height: 70vh;
   max-width: 1200px;
-  max-height: 80vh;
 }
 
 .loader {
   border: 10px solid #f3f3f3;
-  border-top: 10px solid #3498db;
+  border-top: 10px solid #06090a;
   border-radius: 50%;
   width: 3rem;
   height: 3rem;

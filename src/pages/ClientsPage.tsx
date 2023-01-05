@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import Table from "../components/Table";
+import ModalConfirmDelete from "../components/ModalConfirmDelete";
+import ModalEditClient from "../components/ModalEditClient";
+import ModalAddClient from "../components/ModalAddClient";
+import styles from "../styles/clientsPage.module.css";
+import stylesTable from "../styles/tableClients.module.css";
 import stylesDefault from "../styles/page.module.css";
 import { BsFillPencilFill } from "react-icons/bs";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
-import Table from "../components/Table";
-import stylesTable from "../styles/tableClients.module.css";
 import { getClients } from "../services/getClients";
-import ModalConfirmDelete from "../components/ModalConfirmDelete";
 import { postClient } from "../services/postClient";
 import { putClient } from "../services/putClient";
 import { deleteClient } from "../services/deleteClient";
-import styles from "../styles/clientsPage.module.css";
-import ModalEditClient from "../components/ModalEditClient";
-import ModalAddClient from "../components/ModalAddClient";
 
 interface ClientProp {
   id: string;
@@ -151,7 +151,7 @@ export default function ClientsPage() {
       name: "Address",
       selector: (row: any) => row.address,
       sortable: true,
-      width: "16.66%",
+      width: "16%",
     },
     {
       name: "Action",
@@ -219,7 +219,7 @@ export default function ClientsPage() {
           handleConfirmDelete={handleConfirmDelete}
         />
         <Navbar />
-        <h1>Clients</h1>
+        <h1>Customers</h1>
 
         <button onClick={handleOpenAddModal}>
           <AiOutlineUserAdd />

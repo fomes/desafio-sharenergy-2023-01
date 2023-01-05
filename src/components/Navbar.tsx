@@ -29,7 +29,7 @@ export default function Navbar() {
         </Link>
 
         <Link to={"/clients"}>
-          <span>Clients</span>
+          <span>Customer</span>
         </Link>
       </div>
 

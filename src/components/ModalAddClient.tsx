@@ -16,7 +16,7 @@ export default function ModalAddClient({
     <>
       {show && (
         <div className={styles.container}>
-          <h2>New Client</h2>{" "}
+          <h2>New Customer</h2>{" "}
           <span onClick={handleCloseModal}>
             <AiFillCloseCircle />
           </span>
