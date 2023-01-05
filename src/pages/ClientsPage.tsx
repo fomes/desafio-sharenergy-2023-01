@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import stylesDefault from "../styles/page.module.css";
 import { BsFillPencilFill } from "react-icons/bs";
@@ -15,7 +14,6 @@ import { deleteClient } from "../services/deleteClient";
 import styles from "../styles/clientsPage.module.css";
 import ModalEditClient from "../components/ModalEditClient";
 import ModalAddClient from "../components/ModalAddClient";
-import { AuthContext } from "../context/auth";
 
 interface ClientProp {
   id: string;
@@ -31,15 +29,13 @@ export default function ClientsPage() {
   const [showModalAddPerson, setShowModalAddPerson] = useState(false);
   const [showModalEditPerson, setShowModalEditPerson] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [idToDelete, setIdToDelete] = useState("0");
+  const [idToChange, setIdToChange] = useState("0");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-
-  const { auth } = useContext(AuthContext);
 
   const handleCloseAddModal = () => {
     setShowModalAddPerson(false);
@@ -59,7 +55,7 @@ export default function ClientsPage() {
     setShowDeleteModal(true);
     setShowModalEditPerson(false);
     setShowModalAddPerson(false);
-    setIdToDelete(id);
+    setIdToChange(id);
   };
 
   const handleConfirmAdd = () => {
@@ -81,9 +77,9 @@ export default function ClientsPage() {
   };
 
   const handleConfirmDelete = () => {
-    deleteClient(idToDelete);
+    deleteClient(idToChange);
     handleCloseDeleteModal();
-    setIdToDelete("0");
+    setIdToChange("0");
 
     alert("User successfully deleted!");
     getClients(setData);
@@ -93,7 +89,7 @@ export default function ClientsPage() {
     setShowModalEditPerson(true);
     setShowModalAddPerson(false);
     setShowDeleteModal(false);
-    setIdToDelete(id);
+    setIdToChange(id);
 
     const filteredPerson = data.filter((item: ClientProp) => item.id === id);
     setName(filteredPerson[0].name);
@@ -107,7 +103,7 @@ export default function ClientsPage() {
     if (!name || !email || !cpf || !address || !phone) {
       alert("Fill all the fields!");
     } else {
-      putClient(idToDelete, name, email, cpf, address, phone);
+      putClient(idToChange, name, cpf, email, phone, address);
 
       setName("");
       setEmail("");
@@ -117,7 +113,7 @@ export default function ClientsPage() {
 
       alert(`${name} successfully edited!`);
       setShowModalEditPerson(false);
-      setIdToDelete("0");
+      setIdToChange("0");
       getClients(setData);
     }
   };
@@ -189,57 +185,53 @@ export default function ClientsPage() {
 
   return (
     <>
-      {auth ? (
-        <div className={stylesDefault.container}>
-          <ModalAddClient
-            show={showModalAddPerson}
-            handleCloseModal={handleCloseAddModal}
-            handleConfirmAdd={handleConfirmAdd}
-            handleName={(event: any) => setName(event.target.value)}
-            handleEmail={(event: any) => setEmail(event.target.value)}
-            handleCpf={(event: any) => setCpf(event.target.value)}
-            handleAddress={(event: any) => setAddress(event.target.value)}
-            handlePhone={(event: any) => setPhone(event.target.value)}
-          />
+      <div className={stylesDefault.container}>
+        <ModalAddClient
+          show={showModalAddPerson}
+          handleCloseModal={handleCloseAddModal}
+          handleConfirmAdd={handleConfirmAdd}
+          handleName={(event: any) => setName(event.target.value)}
+          handleEmail={(event: any) => setEmail(event.target.value)}
+          handleCpf={(event: any) => setCpf(event.target.value)}
+          handleAddress={(event: any) => setAddress(event.target.value)}
+          handlePhone={(event: any) => setPhone(event.target.value)}
+        />
 
-          <ModalEditClient
-            show={showModalEditPerson}
-            handleCloseEditModal={handleCloseEditModal}
-            handleConfirmEdit={handleConfirmEdit}
-            name={name}
-            email={email}
-            cpf={cpf}
-            address={address}
-            phone={phone}
-            handleName={(event: any) => setName(event.target.value)}
-            handleEmail={(event: any) => setEmail(event.target.value)}
-            handleCpf={(event: any) => setCpf(event.target.value)}
-            handleAddress={(event: any) => setAddress(event.target.value)}
-            handlePhone={(event: any) => setPhone(event.target.value)}
-          />
+        <ModalEditClient
+          show={showModalEditPerson}
+          handleCloseEditModal={handleCloseEditModal}
+          handleConfirmEdit={handleConfirmEdit}
+          name={name}
+          email={email}
+          cpf={cpf}
+          address={address}
+          phone={phone}
+          handleName={(event: any) => setName(event.target.value)}
+          handleEmail={(event: any) => setEmail(event.target.value)}
+          handleCpf={(event: any) => setCpf(event.target.value)}
+          handleAddress={(event: any) => setAddress(event.target.value)}
+          handlePhone={(event: any) => setPhone(event.target.value)}
+        />
 
-          <ModalConfirmDelete
-            show={showDeleteModal}
-            handleCloseDeleteModal={handleCloseDeleteModal}
-            handleConfirmDelete={handleConfirmDelete}
-          />
-          <Navbar />
-          <h1>Clients</h1>
+        <ModalConfirmDelete
+          show={showDeleteModal}
+          handleCloseDeleteModal={handleCloseDeleteModal}
+          handleConfirmDelete={handleConfirmDelete}
+        />
+        <Navbar />
+        <h1>Clients</h1>
 
-          <button onClick={handleOpenAddModal}>
-            <AiOutlineUserAdd />
-            New
-          </button>
+        <button onClick={handleOpenAddModal}>
+          <AiOutlineUserAdd />
+          New
+        </button>
 
-          <div className={stylesTable.container}>
-            <div className={stylesTable.dataTable}>
-              <Table dataProps={data} columnProps={columns} />
-            </div>
+        <div className={stylesTable.container}>
+          <div className={stylesTable.dataTable}>
+            <Table dataProps={data} columnProps={columns} />
           </div>
         </div>
-      ) : (
-        <ErrorPage />
-      )}
+      </div>
     </>
   );
 }
