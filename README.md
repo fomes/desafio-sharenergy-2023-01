@@ -3,6 +3,10 @@
 
 Aplicação web (frontend e backend) capaz de realizar a comunicação com APIs distintas, além de um CRUD. Projeto desenvolvido para o desafio da empresa ShareEnergy.
 
+## Repisitório Back-end
+
+Link do repositório da api de clientes: https://github.com/fomes/se-api-ts/tree/master
+
 
 ## Rodando localmente
 
