@@ -16,7 +16,7 @@ import { deleteClient } from "../services/deleteClient";
 import styles from "../styles/clientsPage.module.css";
 import ModalEditClient from "../components/ModalEditClient";
 import ModalAddClient from "../components/ModalAddClient";
-import { AuthContext } from "../context";
+import { AuthContext } from "../context/auth";
 import ErrorPage from "./ErrorPage";
 
 interface ClientProp {

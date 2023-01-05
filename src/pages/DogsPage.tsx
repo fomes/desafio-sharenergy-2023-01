@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import defaultStyles from "../styles/page.module.css";
 import styles from "../styles/dogsPage.module.css";
 import { BiLogOutCircle } from "react-icons/bi";
-import { AuthContext } from "../context";
+import { AuthContext } from "../context/auth";
 import ErrorPage from "./ErrorPage";
 
 export default function DogsPage() {

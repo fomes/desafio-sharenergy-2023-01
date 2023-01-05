@@ -3,14 +3,15 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Table from "../components/Table";
-import { AuthContext } from "../context";
+import { AuthContext } from "../context/auth";
+import useAuth from "../hooks/useAuth";
 import { getUsers } from "../services/getUsers";
 import styles from "../styles/page.module.css";
 import stylesTable from "../styles/tableUsers.module.css";
 import ErrorPage from "./ErrorPage";
 
 export default function Home() {
-  const { auth, setAuth } = useContext(AuthContext);
+  const { logOut } = useAuth();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -50,9 +51,7 @@ export default function Home() {
   ];
 
   const handleLogOut = () => {
-    localStorage.removeItem("auth");
-    localStorage.removeItem("remember");
-    setAuth(false);
+    logOut();
     navigate("/");
   };
 
@@ -62,23 +61,19 @@ export default function Home() {
 
   return (
     <>
-      {auth ? (
-        <div className={styles.container}>
-          <h1>Home</h1>
-          <button onClick={handleLogOut}>
-            <BiLogOutCircle /> Logout
-          </button>
-          <Navbar />
+      <div className={styles.container}>
+        <h1>Home</h1>
+        <button onClick={handleLogOut}>
+          <BiLogOutCircle /> Logout
+        </button>
+        <Navbar />
 
-          <div className={stylesTable.container}>
-            <div className={stylesTable.dataTable}>
-              <Table dataProps={data} columnProps={columns} />
-            </div>
+        <div className={stylesTable.container}>
+          <div className={stylesTable.dataTable}>
+            <Table dataProps={data} columnProps={columns} />
           </div>
         </div>
-      ) : (
-        <ErrorPage />
-      )}
+      </div>
     </>
   );
 }
