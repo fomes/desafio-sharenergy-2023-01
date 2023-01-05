@@ -59,7 +59,7 @@
   background-color: var(--blue-400);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .container {
     padding-left: 0;
   }
