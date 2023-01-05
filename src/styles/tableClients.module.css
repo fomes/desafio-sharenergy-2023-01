@@ -10,3 +10,9 @@
 .dataTable > div > div > div > div {
   font-weight: bold;
 }
+
+@media (max-width: 1360px) {
+  .container {
+    width: 97%;
+  }
+}
