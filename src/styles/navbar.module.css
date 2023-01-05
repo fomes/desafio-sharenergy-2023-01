@@ -1,17 +1,28 @@
 .container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+
   margin-bottom: 1rem;
+  margin-top: -1rem;
+  margin-left: -1rem;
+  height: 3rem;
+  background: var(--gunmetal-800);
+}
+
+.btnContainer {
+  display: flex;
+  gap: 1rem;
 }
 
 .container a {
-  background: var(--gunmetal-100);
-  color: var(--gunmetal-800);
-  width: 1.5rem;
+  color: var(--gunmetal-200);
+  width: 4.5rem;
   height: 1.5rem;
   text-decoration: none;
-  border-radius: 50%;
+  border-radius: 8px;
   font-weight: 700;
 
   display: flex;
@@ -20,7 +31,11 @@
 }
 
 .container a:hover {
-  background: var(--gunmetal-200);
+  color: var(--gunmetal-100);
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .container > button {
@@ -42,4 +57,26 @@
 
 .container > button:hover {
   background-color: var(--blue-400);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0;
+  }
+
+  .container > button > span {
+    display: none;
+  }
+
+  .container > button {
+    width: 3rem;
+  }
+
+  .container > button > svg {
+    font-size: 1.3rem;
+  }
+
+  .btnContainer {
+    gap: 0;
+  }
 }

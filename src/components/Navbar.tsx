@@ -15,24 +15,26 @@ export default function Navbar() {
 
   return (
     <div className={styles.container}>
-      <Link to={"/home"}>
-        <span>1</span>
-      </Link>
+      <div className={styles.btnContainer}>
+        <Link to={"/home"}>
+          <span>Home</span>
+        </Link>
 
-      <Link to={"/cats"}>
-        <span>2</span>
-      </Link>
+        <Link to={"/cats"}>
+          <span>Cats</span>
+        </Link>
 
-      <Link to={"/dogs"}>
-        <span>3</span>
-      </Link>
+        <Link to={"/dogs"}>
+          <span>Dogs</span>
+        </Link>
 
-      <Link to={"/clients"}>
-        <span>4</span>
-      </Link>
+        <Link to={"/clients"}>
+          <span>Clients</span>
+        </Link>
+      </div>
 
       <button onClick={handleLogOut}>
-        <BiLogOutCircle /> Logout
+        <BiLogOutCircle /> <span>Logout</span>
       </button>
     </div>
   );

@@ -2,13 +2,13 @@
   position: fixed;
   width: 100vw;
   min-height: 100vh;
-  background-color: var(--gunmetal-800);
+  background-color: var(--gunmetal-500);
   color: var(--gunmetal-200);
   padding: 1rem;
 }
 
 .container > button {
-  height: 3rem;
+  height: 2.3rem;
   margin-top: 1rem;
   padding: 1rem;
   font-size: 1rem;
