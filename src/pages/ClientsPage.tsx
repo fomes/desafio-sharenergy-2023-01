@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import stylesDefault from "../styles/page.module.css";
-import { BiLogOutCircle } from "react-icons/bi";
 import { BsFillPencilFill } from "react-icons/bs";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { FaTrashAlt } from "react-icons/fa";
@@ -17,7 +16,6 @@ import styles from "../styles/clientsPage.module.css";
 import ModalEditClient from "../components/ModalEditClient";
 import ModalAddClient from "../components/ModalAddClient";
 import { AuthContext } from "../context/auth";
-import ErrorPage from "./ErrorPage";
 
 interface ClientProp {
   id: string;
@@ -41,15 +39,7 @@ export default function ClientsPage() {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
 
-  const { auth, setAuth } = useContext(AuthContext);
-
-  const navigate = useNavigate();
-
-  const handleLogOut = () => {
-    localStorage.removeItem("auth");
-    setAuth(false);
-    navigate("/");
-  };
+  const { auth } = useContext(AuthContext);
 
   const handleCloseAddModal = () => {
     setShowModalAddPerson(false);
@@ -233,12 +223,9 @@ export default function ClientsPage() {
             handleCloseDeleteModal={handleCloseDeleteModal}
             handleConfirmDelete={handleConfirmDelete}
           />
-          <h1>Clients</h1>
-          <button onClick={handleLogOut}>
-            <BiLogOutCircle /> Logout
-          </button>
-
           <Navbar />
+          <h1>Clients</h1>
+
           <button onClick={handleOpenAddModal}>
             <AiOutlineUserAdd />
             New

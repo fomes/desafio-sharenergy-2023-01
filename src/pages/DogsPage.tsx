@@ -1,23 +1,11 @@
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import defaultStyles from "../styles/page.module.css";
 import styles from "../styles/dogsPage.module.css";
-import { BiLogOutCircle } from "react-icons/bi";
-import { AuthContext } from "../context/auth";
-import ErrorPage from "./ErrorPage";
 
 export default function DogsPage() {
   const [imageUrl, setImageUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { auth, setAuth } = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const handleLogOut = () => {
-    localStorage.removeItem("auth");
-    setAuth(false);
-    navigate("/");
-  };
 
   const handleGetDogs = async () => {
     try {
@@ -34,27 +22,20 @@ export default function DogsPage() {
 
   return (
     <>
-      {auth ? (
-        <div className={defaultStyles.container}>
-          <h1>Dogs</h1>
-          <button onClick={handleLogOut}>
-            <BiLogOutCircle /> Logout
-          </button>
-          <Navbar />
+      <div className={defaultStyles.container}>
+        <Navbar />
+        <h1>Dogs</h1>
 
-          <button onClick={handleGetDogs}>New Dog</button>
+        <button onClick={handleGetDogs}>New Dog</button>
 
-          <div className={styles.imgContainer}>
-            {isLoading ? (
-              <div className={styles.loader}></div>
-            ) : (
-              <img src={imageUrl} alt="" />
-            )}
-          </div>
+        <div className={styles.imgContainer}>
+          {isLoading ? (
+            <div className={styles.loader}></div>
+          ) : (
+            <img src={imageUrl} alt="" />
+          )}
         </div>
-      ) : (
-        <ErrorPage />
-      )}
+      </div>
     </>
   );
 }

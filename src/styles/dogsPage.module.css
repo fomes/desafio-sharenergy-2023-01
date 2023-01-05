@@ -5,6 +5,7 @@
 .imgContainer > img {
   width: 90%;
   max-width: 1200px;
+  max-height: 80vh;
 }
 
 .loader {

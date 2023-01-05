@@ -21,7 +21,7 @@ export default function ModalAddClient({
             <AiFillCloseCircle />
           </span>
           <input type="text" placeholder="First Name" onChange={handleName} />
-          <input type="text" placeholder="Email" onChange={handleEmail} />
+          <input type="email" placeholder="Email" onChange={handleEmail} />
           <input
             type="text"
             placeholder="CPF"

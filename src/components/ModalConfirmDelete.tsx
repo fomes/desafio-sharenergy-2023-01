@@ -12,8 +12,8 @@ export default function ModalConfirmDelete({
           <h2>Tem certeza?</h2>
 
           <div>
-            <button onClick={handleCloseDeleteModal}>Cancelar</button>
             <button onClick={handleConfirmDelete}>Deletar</button>
+            <button onClick={handleCloseDeleteModal}>Cancelar</button>
           </div>
         </div>
       )}

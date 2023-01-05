@@ -1,7 +1,7 @@
 .container {
   display: flex;
+  align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -21,4 +21,25 @@
 
 .container a:hover {
   background: var(--gunmetal-200);
+}
+
+.container > button {
+  height: 2rem;
+  width: 5rem;
+  font-weight: 600;
+  background: var(--blue-500);
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.container > button:hover {
+  background-color: var(--blue-400);
 }
