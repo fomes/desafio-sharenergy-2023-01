@@ -7,6 +7,9 @@ Aplicação web (frontend e backend) capaz de realizar a comunicação com APIs 
 
 Link do repositório da api de clientes: https://github.com/fomes/se-api-ts/tree/master
 
+## Video de apresentação
+
+https://youtu.be/0w114Le9icM
 
 ## Rodando localmente
 
