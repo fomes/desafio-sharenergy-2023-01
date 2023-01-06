@@ -15,12 +15,13 @@
 
 .btnContainer {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  width: 23rem;
 }
 
 .container a {
   color: var(--gunmetal-200);
-  width: 4.5rem;
   height: 1.5rem;
   text-decoration: none;
   border-radius: 8px;
@@ -76,9 +77,5 @@
 
   .container > button > svg {
     font-size: 1.3rem;
-  }
-
-  .btnContainer {
-    gap: 0;
   }
 }
